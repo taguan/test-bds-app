@@ -24,6 +24,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -119,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "test-bds-app"
+    }
+  },
+  "defaultProject": "test-bds-app",
+  "cli": {
+    "analytics": "729ed7fa-3140-4f6c-a685-d539cf8ab8b2"
+  }
 }

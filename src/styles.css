@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+.card-item {
+  margin: 5px;
+}
+
+.board {
+  margin-bottom: 30px;
+}
+
+.column {
+  margin-right: 15px;
+  margin-left: 15px;
+  background-color: lightyellow;
+  width: 100%
+}

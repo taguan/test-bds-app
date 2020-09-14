@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'test-bds-app';
+  inProgressTitle = 'first title';
+
+  changeTitle(): any {
+    this.inProgressTitle = 'second title';
+  }
 }
