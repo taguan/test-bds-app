@@ -1,30 +1,23 @@
 import {EventEmitter, Injectable} from '@angular/core';
-import {Card} from './card';
+import {Card} from './model/card';
+import {ApiService} from './api/api.service';
+import {Observable} from 'rxjs';
 
 @Injectable()
 export class CardProviderService {
 
   newCardEmitter = new EventEmitter<Card>();
 
-  constructor() {
+  constructor(private apiService: ApiService) {
   }
 
-  fetchCardsForState(state: string): Card[] {
-    if (state === 'TO DO') {
-      return [
-        new Card('Card 1', 'this is my card 1', 'BDS', 'TO DO'),
-        new Card('Card 2', 'this is my card 2', 'BDS', 'TO DO')
-      ];
-    } else if (state === 'IN PROGRESS') {
-      return [new Card('Card 3', 'this is my card 3', 'BDS', 'IN PROGRESS')];
-    } else {
-      return [new Card('Card 4', 'this is my card 4', 'BDS', 'DONE')];
-
-    }
+  fetchCards(): Observable<Card[]> {
+    return this.apiService.getCards();
   }
 
-  addCard(card: Card) {
-    console.log('new card to be pushed to backend: ' + card);
-    this.newCardEmitter.emit(card);
+  addCard(card: Card): Observable<Card> {
+    card.id = 0;
+    this.newCardEmitter.emit(card); // THIS IS WRONG
+    return this.apiService.createCard(card);
   }
 }

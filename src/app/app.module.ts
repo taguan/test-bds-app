@@ -9,6 +9,8 @@ import {CardProviderService} from './card-provider.service';
 import { CardAdderComponent } from './card-adder/card-adder.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {ReactiveFormsModule} from '@angular/forms';
+import {ApiService} from './api/api.service';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,9 +23,10 @@ import {ReactiveFormsModule} from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [CardProviderService],
+  providers: [CardProviderService, ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

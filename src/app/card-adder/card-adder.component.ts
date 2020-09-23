@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Card} from '../card';
 import {CardProviderService} from '../card-provider.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
@@ -24,9 +23,10 @@ export class CardAdderComponent implements OnInit {
 
 
   addCard() {
-    const card = new Card(this.cardForm.get('title').value, this.cardForm.get('description').value,
-      this.cardForm.get('assignee').value, 'TO DO');
-    this.cardProviderService.addCard(card);
+    const card = {title: this.cardForm.get('title').value,
+      description: this.cardForm.get('description').value,
+      assignee: this.cardForm.get('assignee').value, state: 'TO DO'};
+    this.cardProviderService.addCard(card).subscribe();
   }
 
   showAddModal(content) {
